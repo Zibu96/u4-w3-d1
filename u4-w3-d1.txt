@@ -31,3 +31,12 @@ select  extract(year from data_fattura), count(*) from fatture where iva=20 grou
 ------ ESERCIZIO 8 -----
 
 select  extract(year from data_fattura), sum(importo) from fatture  group by  extract(year from data_fattura)
+
+------ EXTRA 1 -----
+
+
+------ EXTRA 2 -----
+
+select  clienti.regione_residenza, sum(importo) from fatture join clienti 
+	on fatture.id_cliente = clienti.numero_cliente group by clienti.regione_residenza
+
