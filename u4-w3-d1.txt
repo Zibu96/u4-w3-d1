@@ -1,0 +1,33 @@
+------ ESERCIZIO 1 ------
+
+select * from clienti where nome='Mario'
+
+------ ESERCIZIO 2 -----
+
+select nome, cognome from clienti where anno_nascita=1982
+
+------ ESERCIZIO 3 -----
+
+select numero_fattura from fatture where iva=20
+
+------ ESERCIZIO 4 -----
+
+select * from prodotti where extract(year from data_attivazione ) = 2017 and in_produzione= true
+
+------ ESERCIZIO 5 -----
+
+select * from fatture f inner join clienti on f.id_cliente = clienti.numero_cliente
+where importo < 1000
+
+------ ESERCIZIO 6 -----
+
+select numero_fattura, importo, iva, data_fattura, fornitori.denominazione from fatture f inner join fornitori 
+	on f.numero_fornitore = fornitori.numero_fornitore
+
+------ ESERCIZIO 7 -----
+
+select  extract(year from data_fattura), count(*) from fatture where iva=20 group by  extract(year from data_fattura) 
+
+------ ESERCIZIO 8 -----
+
+select  extract(year from data_fattura), sum(importo) from fatture  group by  extract(year from data_fattura)
